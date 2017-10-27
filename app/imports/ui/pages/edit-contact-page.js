@@ -59,10 +59,12 @@ Template.Edit_Contact_Page.events({
     }
   },
 
-  'click .delete'(event, instance) {
+  'click .delete'(event) {
     event.preventDefault();
-    Contacts.remove(FlowRouter.getParam('_id'));
-    FlowRouter.go('Home_Page');
+    if (confirm("Do you really want to delete this entry?")) {
+      Contacts.remove(FlowRouter.getParam('_id'));
+      FlowRouter.go('Home_Page');
+    }
   },
 
 });
